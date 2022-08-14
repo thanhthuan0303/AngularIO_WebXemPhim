@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T MOVIE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"
+        integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl" class="container">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+        <a class="navbar-brand " href="#!Body" style="padding: 5px 10px 5px 10px;">
+            <img src="images/logo.png" style="width: 75px; height: 75px; border-radius: 50px;" alt="">
+        </a>
+
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown dropend">
+                <button class="nav-link btn btn-primary" data-bs-toggle="dropdown">
+                    <h4>Thể loại</h4>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#!/Body1">Anime</a></li>
+                    <li><a class="dropdown-item" href="#!/Body2">Tokusatsu</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-primary" href="#!/Phanhoi">
+                    <h4>Phản hồi</h4>
+                </a>
+            </li>
+        </ul>
+        <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Search">
+            <button class="btn btn-primary" type="button">Search</button>
+          </form>
+    </nav>
+
+    <div class="container-fluid" ng-view>
+
+    </div>
+</body>
+
+<script>
+    var app = angular.module("myApp", ["ngRoute"]);
+
+    app.config(function ($routeProvider) {
+        $routeProvider
+            .when("/Body", {
+                templateUrl: "views/body.html",
+            })
+            .when("/Body1", {
+                templateUrl: "views/body1.html",
+            })
+            .when("/Body2", {
+                templateUrl: "views/body2.html",
+            })
+            .when("/Xemphim/:id", {
+                templateUrl: "views/xemphim.html",
+            })
+            .when("/Phanhoi", {
+                templateUrl: "views/phanhoi.html",
+            })
+            .otherwise({
+                templateUrl: "views/body.html"
+            });
+    });
+
+    app.controller("myCtrl", function ($scope) {
+        $scope.users = [
+            {
+                id: 'Attack-On-Titan',
+                img: './images/Attack_On_Titan.jpg',
+                name: "Attack On Titan",
+                gioithieu: "Shingeki no Kyojin là một bộ manga Nhật Bản do Isayama Hajime sáng tác. Tại Việt Nam truyện được phát hành dưới tên Đại chiến Titan dựa theo tựa phiên bản tiếng Anh là Attack on Titan.",
+                clip: './videos/Attack On Titan- Trailer.mp4',
+                theloai: 'anime'
+            },
+
+            {
+                id: 'Dragon-Ball-Super',
+                img: './images/Dragon-Ball-Super.jpg',
+                name: "Dragon Ball Super",
+                gioithieu: "Dragon Ball Super là loạt manga và anime truyền hình của Nhật Bản. Đây là phần tiếp theo của bộ truyện tranh Dragon Ball gốc và loạt phim hoạt hình Dragon Ball Z. Phác thảo cốt truyện tổng thể được chấp bút bởi nhà sáng lập nhượng quyền Dragon Ball là Toriyama Akira.",
+                clip: './videos/Dragon Ball Super- Trailer 2015.mp4',
+                theloai: 'anime'
+            },
+
+            {
+                id: 'Fairy-Tail',
+                img: './images/Fairy_tail.jpg',
+                name: "Fairy Tail",
+                gioithieu: "Fairy Tail là seri manga Nhật Bản do Mashima Hiro sáng tác. Bộ truyện được đăng dài kì trên tạp chí Weekly Shōnen Magazine từ ngày 2 tháng 8 năm 2006 và được Kodansha xuất bản thành 43 tập tankōbon tính đến tháng 5 năm 2014.",
+                clip: './videos/FairyTail Official Trailer.mp4',
+                theloai: 'anime'
+            },
+
+            {
+                id: 'Hunter-X-Hunter',
+                img: './images/hunter_x_hunter.jpg',
+                name: "Hunter X Hunter",
+                gioithieu: "Hunter × Hunter là một bộ anime truyền hình được phát sóng từ năm 2011 đến năm 2014 dựa trên manga Hunter × Hunter của Yoshihiro Togashi. Câu chuyện bắt đầu với một cậu bé tên là Gon Freecss, một ngày nọ phát hiện ra rằng người cha mà cậu nghĩ đã chết, thực tế vẫn còn sống và khỏe mạnh.",
+                clip: './videos/Hunter X Hunter 2011 Trailer.mp4',
+                theloai: 'anime'
+            },
+
+            {
+                id: 'Naruto-Shippuden',
+                img: './images/naruto-shippuden.jpg',
+                name: "Naruto Shippuden",
+                gioithieu: "Naruto: Shippuden là một bộ anime truyền hình dài tập được chuyển thể từ Phần II của loạt manga của Kishimoto Masashi với tổng cộng 500 tập phim. Nội dung phim lấy bối cảnh hai năm rưỡi sau Phần I trong vũ trụ Naruto, xoay quanh cậu ninja thiếu niên Uzumaki Naruto và những đồng đội của cậu.",
+                clip: './videos/Naruto Shippuden OP - Opening 16 60FPS.mp4',
+                theloai: 'anime'
+            },
+
+            {
+                id: 'One-Punch-Man',
+                img: './images/one_punch_man.jpg',
+                name: "One Punch Man",
+                gioithieu: "One-Punch Man là loạt tác phẩm siêu anh hùng Nhật Bản xuất phát điểm là web manga do ONE tạo ra vào năm 2009. Nội dung của loạt manga xoay quanh một siêu anh hùng tên là Saitama, anh có khả năng đánh bại bất cứ đối thủ nào chỉ bằng một cú đấm.",
+                clip: './videos/One Punch Man Official Trailer.mp4',
+                theloai: 'anime'
+            },
+
+            {
+                id: 'One-Piece',
+                img: './images/One-Piece.jpg',
+                name: "One Piece",
+                gioithieu: "One Piece, từng được xuất bản tại Việt Nam dưới tên gọi Đảo Hải Tặc là bộ manga dành cho lứa tuổi thiếu niên của tác giả Oda Eiichiro, được đăng định kì trên tạp chí Weekly Shōnen Jump, ra mắt lần đầu trên ấn bản số 34 vào ngày 19 tháng 7 năm 1997.",
+                clip: './videos/One Piece - Opening 24 (2k).mp4',
+                theloai: 'anime'
+            },
+
+            {
+                id: 'Kaizoku-Sentai-Gokaiger',
+                img: './images/Kaizoku_Sentai_Gokaiger.jpg',
+                name: "Kaizoku Sentai Gokaiger",
+                gioithieu: "Kaizoku Sentai Gokaiger, dịch là Chiến đội hải tặc Gokaiger là tựa series Super Sentai thứ 35 được phát sóng trên TV Asahi vào ngày 13 tháng 2 năm 2011, tiếp nối series Tensou Sentai Goseiger.Bộ phim được chiếu song song với Kamen Rider OOO và Kamen Rider Fourze trong Super Hero Time.",
+                clip: './videos/Kaizoku Sentai Gokaiger - Opening (2011).mp4',
+                theloai: 'tokusatsu'
+            },
+
+            {
+                id: 'Kamen-Rider-Decade',
+                img: './images/Kamen_Rider_Decade.jpg',
+                name: "Kamen Rider Decade",
+                gioithieu: "Kamen Rider Decade là tựa của chương trình truyền hình Tokusatsu Kamen Rider Series, bắt đầu chiếu sau khi Kamen Rider Kiva kết thúc. Bộ phim chiếu song song với phần phim Super Sentai - Samurai Sentai Shinkenger từ tháng 1 đến tháng 9 năm 2009 trong khung giờ Super Hero Time. Đây là series kỉ niệm 10 năm Kamen Rider.",
+                clip: './videos/(Vietsub) Kamen Rider Decade Opening Song.mp4',
+                theloai: 'tokusatsu'
+            },
+
+            {
+                id: 'Kamen-Rider-Saber',
+                img: './images/Kamen_rider_Saber.jpg',
+                name: "Kamen Rider Saber",
+                gioithieu: "Kamen Rider Saber là một bộ phim truyền hình tokusatsu của Nhật Bản trong Kamen Rider Series của Toei. Đây là bộ phim thứ hai ra mắt trong thời kỳ Lệnh Hòa và là phần thứ 31 của loạt phim Kamen rider.",
+                clip: './videos/Opening kamen rider saber.mp4',
+                theloai: 'tokusatsu'
+            },
+
+            {
+                id: 'Kamen-Rider-Zero-One',
+                img: './images/Kamen_rider_Zero-One.jpg',
+                name: "Kamen Rider Zero-One",
+                gioithieu: "Kamen Rider Zero-One là một bộ phim tokusatsu Nhật Bản trong Kamen Rider Series của Toei Company. Đây là bộ phim đầu tiên trong thời kì Lệnh Hòa và là phần thứ 30 của cả loạt phim.",
+                clip: './videos/『REALxEYEZ』- Kamen Rider Zero-One Opening Full.mp4',
+                theloai: 'tokusatsu'
+            },
+
+            {
+                id: 'Kamen-Rider-Zi-O',
+                img: './images/Kamen_rider_zi-O.jpg',
+                name: "Kamen Rider Zi-O",
+                gioithieu: "Kamen Rider Zi-O là một bộ phim tokusatsu Nhật Bản trong Super Hero Senki của Toei BanDai. Đây là bộ phim thứ 20 - cuối cùng trong thời kì Heisei, bộ phim đầu tiên được sản xuất trong thời kì Reiwa và là thứ 29 trong cả loạt phim.",
+                clip: './videos/opening kamen rider zi-o.mp4',
+                theloai: 'tokusatsu'
+            },
+
+            {
+                id: 'Kishiryu-Sentai-Ryuusouger',
+                img: './images/kishiryu-sentai-ryuusouger.jpg',
+                name: "Kishiryu Sentai Ryuusouger",
+                gioithieu: "Kishiryu Sentai Ryusoulger dịch là Chiến đội kị sỹ long Ryusoulger, là Super Sentai series thứ 43 phát sóng vào ngày 17 tháng 3 năm 2019, sau khi Lupinranger VS Patranger kết thúc.",
+                clip: './videos/super sentai kishiryu sentai ryusoulger opening.mp4',
+                theloai: 'tokusatsu'
+            },
+
+            {
+                id: 'Samurai-Sentai-Shinkenger',
+                img: './images/Samurai_Sentai_Shinkenger.jpg',
+                name: "Samurai Sentai Shinkenger",
+                gioithieu: "Samurai Sentai Shinkenger dịch là Chiến đội Samurai Shinkenger, là tựa của series Super Sentai thứ 33 do Toei Company sản xuất được trình chiếu ngày 15 tháng 2 năm 2009, sau khi Engine Sentai Go-onger kết thúc một tuần và tập cuối phát sóng ngày 7 tháng 2 năm 2010.",
+                clip: './videos/Samurai Sentai Shinkenger Opening HD.mp4',
+                theloai: 'tokusatsu'
+            },
+
+            {
+                id: 'Shuriken Sentai Ninninger',
+                img: './images/Shuriken_Sentai_Ninninger.jpg',
+                name: "Shuriken Sentai Ninninger",
+                gioithieu: "Shuriken Sentai Ninninger - tạm dịch là Chiến Đội Thủ lý kiếm Ninninger, là Bộ phim Super Sentai thứ 39, được phát hành vào 22 tháng 2 năm 2015, tiếp sau Ressha Sentai ToQger.",
+                clip: './videos/Opening Nininger.mp4',
+                theloai: 'tokusatsu'
+            },
+        ];
+
+    });
+
+</script>
+
+</html>
